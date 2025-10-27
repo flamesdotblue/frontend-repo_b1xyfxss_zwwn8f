@@ -1,6 +1,8 @@
 import React from 'react';
 import { Film, Clock, PlayCircle, SlidersHorizontal } from 'lucide-react';
 
+const ACCENT = '#FF3B3B';
+
 const movies = [
   {
     id: 1,
@@ -32,7 +34,7 @@ const movies = [
 ];
 
 const MovieCard = ({ movie }) => (
-  <div className="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-[#00FF84]/30 transition">
+  <div className="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition">
     <div className="aspect-[16/10] bg-black/40">
       <img src={movie.poster} alt={movie.title} className="w-full h-full object-cover" />
     </div>
@@ -49,7 +51,7 @@ const MovieCard = ({ movie }) => (
             </span>
           </div>
         </div>
-        <button className="inline-flex items-center gap-2 text-[#00FF84] hover:text-teal-300">
+        <button className="inline-flex items-center gap-2" style={{ color: ACCENT }}>
           <PlayCircle className="h-5 w-5" />
           Trailer
         </button>
@@ -66,7 +68,10 @@ const MovieCard = ({ movie }) => (
         ))}
       </div>
 
-      <button className="mt-4 w-full bg-[#00FF84] hover:bg-teal-300 text-black font-semibold py-2.5 rounded-lg">
+      <button
+        className="mt-4 w-full text-black font-semibold py-2.5 rounded-lg hover:opacity-95"
+        style={{ backgroundColor: ACCENT }}
+      >
         Choose Seats
       </button>
     </div>

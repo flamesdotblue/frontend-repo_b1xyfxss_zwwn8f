@@ -1,6 +1,8 @@
 import React from 'react';
 import { Popcorn, QrCode, Check, X } from 'lucide-react';
 
+const ACCENT = '#FF3B3B';
+
 const seats = Array.from({ length: 6 }).map((_, row) =>
   Array.from({ length: 10 }).map((_, col) => ({
     id: `${String.fromCharCode(65 + row)}${col + 1}`,
@@ -11,7 +13,7 @@ const seats = Array.from({ length: 6 }).map((_, row) =>
 const SeatLegend = () => (
   <div className="flex items-center gap-4 text-sm">
     <div className="flex items-center gap-2"><span className="w-4 h-4 rounded bg-white/10 border border-white/20"></span>Available</div>
-    <div className="flex items-center gap-2"><span className="w-4 h-4 rounded bg-[#00FF84]"></span>Selected</div>
+    <div className="flex items-center gap-2"><span className="w-4 h-4 rounded" style={{ backgroundColor: ACCENT }}></span>Selected</div>
     <div className="flex items-center gap-2"><span className="w-4 h-4 rounded bg-white/20 line-through"></span>Booked</div>
   </div>
 );
@@ -24,14 +26,14 @@ const FoodItem = ({ name, price }) => (
     </div>
     <div className="flex items-center gap-2">
       <button className="h-8 w-8 grid place-items-center rounded-md bg-white/10 text-white"><X className="h-4 w-4" /></button>
-      <button className="h-8 w-8 grid place-items-center rounded-md bg-[#00FF84] text-black font-bold">+</button>
+      <button className="h-8 w-8 grid place-items-center rounded-md text-black font-bold" style={{ backgroundColor: ACCENT }}>+</button>
     </div>
   </div>
 );
 
 const SeatAndFoodPreview = () => {
   return (
-    <section className="bg-[#0A0A0A] text-white py-16">
+    <section id="qr" className="bg-[#0A0A0A] text-white py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-start">
         <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
           <div className="flex items-center justify-between">
@@ -50,7 +52,7 @@ const SeatAndFoodPreview = () => {
                         className={`w-8 h-8 rounded grid place-items-center text-[10px] ${
                           seat.status === 'booked'
                             ? 'bg-white/20 text-gray-400 line-through'
-                            : 'bg-white/10 text-white border border-white/20 hover:border-[#00FF84]/60'
+                            : 'bg-white/10 text-white border border-white/20 hover:border-white/40'
                         }`}
                       >
                         {seat.id.replace(/[A-Z]/g, '')}
@@ -67,7 +69,7 @@ const SeatAndFoodPreview = () => {
         <div className="space-y-6">
           <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
             <div className="flex items-center justify-between">
-              <h3 className="text-xl font-semibold flex items-center gap-2"><Popcorn className="h-5 w-5 text-[#00FF84]"/> Order to Your Seat</h3>
+              <h3 className="text-xl font-semibold flex items-center gap-2"><Popcorn className="h-5 w-5" style={{ color: ACCENT }}/> Order to Your Seat</h3>
               <span className="text-xs text-gray-300 inline-flex items-center gap-1 bg-white/10 px-2 py-1 rounded"><QrCode className="h-3.5 w-3.5"/> A12</span>
             </div>
             <div className="mt-4 divide-y divide-white/10">
@@ -75,7 +77,7 @@ const SeatAndFoodPreview = () => {
               <FoodItem name="Cheese Nachos" price={220} />
               <FoodItem name="Cold Coffee" price={180} />
             </div>
-            <button className="mt-5 w-full bg-[#00FF84] hover:bg-teal-300 text-black font-semibold py-2.5 rounded-lg">
+            <button className="mt-5 w-full text-black font-semibold py-2.5 rounded-lg hover:opacity-95" style={{ backgroundColor: ACCENT }}>
               Add to Cart
             </button>
           </div>
@@ -83,7 +85,7 @@ const SeatAndFoodPreview = () => {
           <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
             <h4 className="font-semibold">Live Order Status</h4>
             <div className="mt-4 space-y-3 text-sm">
-              <div className="flex items-center gap-2"><Check className="h-4 w-4 text-[#00FF84]"/> Preparing</div>
+              <div className="flex items-center gap-2"><Check className="h-4 w-4" style={{ color: ACCENT }}/> Preparing</div>
               <div className="flex items-center gap-2 opacity-70"><Check className="h-4 w-4 text-gray-400"/> Delivering</div>
               <div className="flex items-center gap-2 opacity-50"><Check className="h-4 w-4 text-gray-400"/> Delivered</div>
             </div>

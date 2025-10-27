@@ -1,6 +1,8 @@
 import React from 'react';
 import { ShieldCheck, QrCode, BarChart3, Users } from 'lucide-react';
 
+const ACCENT = '#FF3B3B';
+
 const features = [
   {
     icon: QrCode,
@@ -38,7 +40,7 @@ const AdminHighlights = () => {
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map(({ icon: Icon, title, desc }) => (
             <div key={title} className="bg-white/5 border border-white/10 rounded-2xl p-5">
-              <div className="h-11 w-11 rounded-lg bg-[#00FF84]/15 border border-[#00FF84]/25 text-[#00FF84] grid place-items-center">
+              <div className="h-11 w-11 rounded-lg grid place-items-center border" style={{ backgroundColor: 'rgba(255,59,59,0.15)', borderColor: 'rgba(255,59,59,0.25)', color: ACCENT }}>
                 <Icon className="h-5 w-5" />
               </div>
               <h3 className="mt-4 font-semibold text-lg">{title}</h3>
